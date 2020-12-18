@@ -60,3 +60,19 @@ The following Variables are needed to successfully run the template
 
 ---
 Screeshots folder has the screen shots after running the terraform deployment.
+
+---
+To run the templates
+- Templates require terraform version 0.12 or greater and azure provider 2.40.0 or greater. If running on a different version, please modify the versions.tf
+- Edit the .tfvars file to provide valid values
+- Make sure you have pre determined adminusername and adminpassword. These values are supplied at runtime and once the VM's are created this is the only way to log into the machine
+- If you set debugon to 1, then the template will create a public IP's for the VM's,it will also create a NSG to allow SSH access. This will allow the user to login to the VM's to debug issues. 
+
+`terraform init`
+  Above command will initialize Azure Provider. 
+
+`terraform plan or terraform plan -out nd081-project1.plan`
+  Above command will create a in memory plan for template.
+
+`terraform apply or terraform apply nd081-project1.plan`
+  Above command will apply the plan and create resources in your subscription
