@@ -2,6 +2,8 @@
 .DS_Store?
 .terraform
 plan
+.tfstate
+.tfstate.backup
 C1 - Azure Infrastructure Operations/project/az_tag_policy/terraform.tfstate.backup
 C1 - Azure Infrastructure Operations/project/az_tag_policy/terraform.tfstate
 C1 - Azure Infrastructure Operations/project/az_vm_template/.terraform.tfstate.lock.info
