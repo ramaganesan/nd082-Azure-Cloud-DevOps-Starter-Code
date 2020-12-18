@@ -1,4 +1,4 @@
-Project is organized into different folders based on the project requirments
+Project is organized into different folders based on the project requirements
 
 - starter_file
   This has the starter files provided

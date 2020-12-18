@@ -1,7 +1,6 @@
 .DS_Store
 .DS_Store?
 .terraform
-plan
 .tfstate
 .tfstate.backup
 C1 - Azure Infrastructure Operations/project/az_tag_policy/terraform.tfstate.backup
