@@ -43,7 +43,7 @@ resource "azurerm_subnet_network_security_group_association" "internal" {
 }
 
 //NSG Rule to allow ssh on 22
-resource "azurerm_network_security_rule" "internal-vnet" {
+resource "azurerm_network_security_rule" "ssh-vnet" {
   count = "${var.debugon == 1 ? 1 : 0}"
   name                        = "AllowAllVNetInbound"
   priority                    = 100
@@ -59,7 +59,7 @@ resource "azurerm_network_security_rule" "internal-vnet" {
 }
 
 //NSG Inbound traffic on port 80
-resource "azurerm_network_security_rule" "internal-internet" {
+resource "azurerm_network_security_rule" "http-internet" {
   name                        = "AllowLBTraffic"
   priority                    = 110
   direction                   = "Inbound"
@@ -67,6 +67,21 @@ resource "azurerm_network_security_rule" "internal-internet" {
   protocol                    = "TCP"
   source_port_range           = "*"
   destination_port_range      = "80"
+  source_address_prefix       = "Internet"
+  destination_address_prefix  = "VirtualNetwork"
+  resource_group_name         = azurerm_resource_group.main.name
+  network_security_group_name = azurerm_network_security_group.internal.name
+}
+
+//NSG To Deny All other traffic
+resource "azurerm_network_security_rule" "deny-internet" {
+  name                        = "AllowLBTraffic"
+  priority                    = 120
+  direction                   = "Inbound"
+  access                      = "Deny"
+  protocol                    = "TCP"
+  source_port_range           = "*"
+  destination_port_range      = "*"
   source_address_prefix       = "Internet"
   destination_address_prefix  = "VirtualNetwork"
   resource_group_name         = azurerm_resource_group.main.name

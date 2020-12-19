@@ -1,3 +1,23 @@
+# Deploying custom image using Packer
+This repo has a packer template that will deploy a custom Ubuntu Image in your Azure subscription.
+
+The following are the list of variables to run the template
+- env variables
+  - ARM_CLIENT_ID -> Azure RM client Id
+  - ARM_CLIENT_SECRET -> Azure RM client secret
+  - ARM_SUBSCRIPTION_ID -> Azure Subscription Id
+- user variables
+  - resource_group_name
+  - image_name
+
+---
+To run the Packer template
+- Set the required Environment Variables
+- Validate the Template
+  - `packer validate -var 'resource_group_name=nd082-c1-project-rg' -var 'image_name=nd082-c1-project_review_image' server.json`
+- Build the Template
+  - `packer build -var 'resource_group_name=nd082-c1-project-rg' -var 'image_name=nd082-c1-project_review_image' server.json`
+
 # Deploying a Webserver in Azure
 
 This repo has the source code for deploying a Webserver architecture using Terraform in Azure. The following resources will be deployed in your subscription
