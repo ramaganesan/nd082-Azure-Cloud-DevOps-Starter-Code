@@ -75,7 +75,7 @@ resource "azurerm_network_security_rule" "http-internet" {
 
 //NSG To Deny All other traffic
 resource "azurerm_network_security_rule" "deny-internet" {
-  name                        = "AllowLBTraffic"
+  name                        = "DenyInternetTraffic"
   priority                    = 120
   direction                   = "Inbound"
   access                      = "Deny"

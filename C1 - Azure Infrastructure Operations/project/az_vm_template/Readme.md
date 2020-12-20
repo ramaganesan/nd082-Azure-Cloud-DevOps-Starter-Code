@@ -1,3 +1,9 @@
+# Project
+This project demonstrates
+- Creating a Azure VM Images using Packer Template
+- Create Azure Webserver Infrastructure using Terraform
+
+
 # Deploying custom image using Packer
 This repo has a packer template that will deploy a custom Ubuntu Image in your Azure subscription.
 
